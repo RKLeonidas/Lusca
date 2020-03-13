@@ -60,8 +60,6 @@ for (i in 1:length(Filmes)) {
   tabela<-tabela %>%
     rbind(crawler_imdb(Filmes[i]))
   
-
-   
 #Colocando em uma tabela em branco
 NewTabel<-data.frame()
 for (i in 1:length(Filmes)) {
