@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #Testando Crowler com o Top100
 library(rvest)
 library(xml2)
@@ -13,20 +12,15 @@ titulo.f
 
 linhas_impar <- seq(2, nrow(titulo.frame), 2)
 
-=======
-#Testando Crowler com o Top100
-library(rvest)
-library(xml2)
-top_rated<-read_html("https://www.imdb.com/chart/top/?ref_=nv_mv_250")
-html_nodes(top_rated,"tr a")
-Titulo<-top_rated %>% 
-  html_nodes("tr a") %>% 
-  html_text()
-titulo.frame<-data.frame(Titulo)
-titulo.f
+Movies<-titulo.frame[-linhas_impar, ]
+data.frame(Movies)
 
+rate<-read_html("https://www.imdb.com/chart/top/?ref_=nv_mv_250")
 
-linhas_impar <- seq(2, nrow(titulo.frame), 2)
+Notas<-rate %>% 
+  html_nodes("tr strong") %>% 
+  html_text() %>% 
+  as.numeric()
+Filmes_Mais_Bem_Avaliados_IMDB<-data.frame(Movies,Notas)
 
->>>>>>> 205e1777a51c7a8903292d6400f0d23e7a00eba6
-titulo.frame[linhas_impar, ]
+#alo
